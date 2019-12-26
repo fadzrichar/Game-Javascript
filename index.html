@@ -7,15 +7,17 @@
         <title>Game</title>
     
         <!-- STYLE -->
-        <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="./assets/css/style.css">
     
     </head>
 <body>
-    <button onclick=rollDice()>Roll Dice</button>
-    <div id=board></div>
-    <canvas id=canvas width="1000" height="1000"></canvas>
-    <script src="assets/js/ladders.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <div class="score"></div>
+    <div class="game">
+        <div class="startScreen">Press here to Start
+            <br>Arrow keys to move
+            <br>If you hit a another car you will lose.</div>
+        <div class="gameArea"></div>
+    </div>
+    <script src="assets/js/game.js"></script>
 </body>
 </html>
