@@ -7,16 +7,17 @@
   bottom: 100px;
   margin: auto;
   width: 100px;
-  height: 150px;
+  height: 50px;
   background-color:transparent;
   line-height: 30px;
   font-size: 25px;
   text-align: center;
   vertical-align: middle;
   /* background-image: url('https://vectorified.com/images/pacman-ghost-icon-5.png'); */
-  background-image: url('https://thumbs.gfycat.com/BigCaringCrocodile-small.gif');
+  /* background-image: url('https://thumbs.gfycat.com/BigCaringCrocodile-small.gif'); */
+  background-image: url('https://media2.giphy.com/media/DuApP5Rpl4Hza/source.gif');
   background-size: cover;
-  border: 1px solid black;
+  /* border: 1px solid #efefef; */
   border-radius: 10%;
 }
 
@@ -28,12 +29,12 @@
   height: 100px;
   background-color:transparent;
   line-height: 30px;
-  font-size: 25px;
+  font-size: 1px;
   text-align: center;
   vertical-align: middle;
-  background-image: url('https://webstockreview.net/images/zombie-clipart-cartoon-baby-1.png');
+  background-image: url('http://cdn.lowgif.com/full/af641fc38c0726bd-flying-bird-gif-transparent-gm6-info.gif');
   background-size: cover;
-  border: 1px solid black;
+  /* border: 1px solid #efefef; */
   border-radius: 10%;
 }
 /* 
@@ -46,7 +47,7 @@
 } */
 
 .score {
-  background-color: green;
+  background-color: skyblue;
   height: 70px;
   text-align: center;
   color: white;
@@ -55,8 +56,8 @@
 }
 
 .gameArea {
-  background-color: green;
-  width: 400px;
+  background-color: skyblue;
+  width: 500px;
   height: 100%;
   overflow: hidden;
   position: relative;
@@ -64,16 +65,15 @@
 }
 
 .startScreen {
-  position: absolute;
-  background-color: yellow;
-  left: 25%;
-  top: 100px;
+  position: center;
+  background-color: whitesmoke;
+  top: 80px;
   color: black;
   z-index: 1;
   text-align: center;
   border: 1px solid black;
   padding: 15px;
   margin: auto;
-  width: 50%;
+  width: 400px;
   font-family: sans-serif;
 }

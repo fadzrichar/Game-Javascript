@@ -73,6 +73,21 @@ function playGame() {
         window.requestAnimationFrame(playGame);
         player.score++;
         score.innerText = "Score: " + player.score;
+        if (player.score > 100) {
+            player.speed = 6
+        }
+        if (player.score > 200) {
+            player.speed = 7
+        }
+        if (player.score > 300) {
+            player.speed = 8
+        }
+        if (player.score > 400) {
+            player.speed = 9
+        }
+        if (player.score > 500) {
+            player.speed = 10
+        }
     }
 }
 
