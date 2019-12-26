@@ -43,7 +43,7 @@ function moveEnemy(car) {
         if (item.y >= 1500) {
             item.y = -600;
             item.style.left = Math.floor(Math.random() * 350) + "px";
-            item.style.backgroundColor = randomColor();
+            // item.style.backgroundColor = randomColor();
         }
         item.y += player.speed;
         item.style.top = item.y + "px";
@@ -112,22 +112,22 @@ function start() {
     gameArea.appendChild(car);
     player.x = car.offsetLeft;
     player.y = car.offsetTop;
-    for (let x = 0; x < 3; x++) {
+    for (let x = 0; x < 9; x++) {
         let enemy = document.createElement("div");
         enemy.classList.add("enemy");
         enemy.innerHTML = "<br>" + (x + 1);
         enemy.y = ((x + 1) * 600) * -1;
         enemy.style.top = enemy.y + "px";
         enemy.style.left = Math.floor(Math.random() * 350) + "px";
-        enemy.style.backgroundColor = randomColor();
+        // enemy.style.backgroundColor = randomColor();
         gameArea.appendChild(enemy);
     }
 }
 
-function randomColor() {
-    function c() {
-        let hex = Math.floor(Math.random() * 256).toString(16);
-        return ("0" + String(hex)).substr(-2)
-    }
-    return "#" + c() + c() + c();
-}
+// function randomColor() {
+//     function c() {
+//         let hex = Math.floor(Math.random() * 256).toString(16);
+//         return ("0" + String(hex)).substr(-2)
+//     }
+//     return "#" + c() + c() + c();
+// }
