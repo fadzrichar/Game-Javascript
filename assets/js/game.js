@@ -32,24 +32,24 @@ function moveLines() {
     })
 }
 
-function nabrak(a, b) {
+function getHit(a, b) {
     let aRect = a.getBoundingClientRect();
     let bRect = b.getBoundingClientRect();
     return !(
         (aRect.bottom < bRect.top) || (aRect.top > bRect.bottom) || (aRect.right < bRect.left) || (aRect.left > bRect.right))
 }
 
-function dapatKoin(a, b) {
+function getWorm(a, b) {
     let aRect = a.getBoundingClientRect();
     let bRect = b.getBoundingClientRect();
     return !(
         (aRect.bottom < bRect.top) || (aRect.top > bRect.bottom) || (aRect.right < bRect.left) || (aRect.left > bRect.right))
 }
 
-function gerakTurunMobil(car) {
-    let ele = document.querySelectorAll(".batu");
+function movingDownBird(bird) {
+    let ele = document.querySelectorAll(".swarm");
     ele.forEach(function (item) {
-        if (nabrak(car, item)) {
+        if (getHit(bird, item)) {
             // console.log("HIT");
             endGame();
         }
@@ -63,10 +63,10 @@ function gerakTurunMobil(car) {
     })
 }
 
-function gerakTurunKoin(car) {
-    let koins = document.querySelectorAll(".koin");
-    koins.forEach(function (item) {        
-        if (dapatKoin(car, item)) {
+function movingDownWorm(bird) {
+    let worms = document.querySelectorAll(".worm");
+    worms.forEach(function (item) {        
+        if (getWorm(bird, item)) {
             item.classList.add("hide");
             player.score += 100;
             player.bensin_stat += 300;
@@ -83,14 +83,14 @@ function gerakTurunKoin(car) {
 
 function playGame() {
     moveLines();
-    let car = document.querySelector(".car");
-    gerakTurunMobil(car);
+    let bird = document.querySelector(".bird");
+    movingDownBird(bird);
 
-    let koin = document.querySelector(".koin");
-    gerakTurunKoin(car);
+    let worm = document.querySelector(".worm");
+    movingDownWorm(bird);
     let road = gameArea.getBoundingClientRect();
     if (player.start) {
-        if (keys.ArrowUp && player.y > road.top) {
+        if (keys.ArrowUp && player.y > road.top - 250) {
             player.y -= player.speed;
         }
         if (keys.ArrowDown && player.y < road.bottom - 250) {
@@ -99,11 +99,11 @@ function playGame() {
         if (keys.ArrowLeft && player.x > 0) {
             player.x -= player.speed;
         }
-        if (keys.ArrowRight && player.x < (road.width - 50)) {
+        if (keys.ArrowRight && player.x < (road.width - 100)) {
             player.x += player.speed;
         }
-        car.style.left = player.x + 'px';
-        car.style.top = player.y + 'px';
+        bird.style.left = player.x + 'px';
+        bird.style.top = player.y + 'px';
         window.requestAnimationFrame(playGame);
         player.score++;
         score.innerText = "Score: " + player.score;
@@ -121,18 +121,19 @@ function playGame() {
         }
         if (player.score > 500) {
             player.speed = 10
+        }
         score.innerHTML = "Score: " + player.score ;
         
         player.bensin_stat--;
-        bensin_stat.innerHTML = "Fuel: "+ player.bensin_stat ;
+        bensin_stat.innerHTML = "Energy: "+ player.bensin_stat ;
 
         if (player.bensin_stat < 1){
-            // console.log("Bensin habis boss");
-            endGameNoFuel();
+            // console.log("Energy habis boss");
+            endGameNoEnergy();
         }
     }
 }
-}
+
 
 function pressOn(e) {
     e.preventDefault();
@@ -153,9 +154,9 @@ function endGame() {
     bensin_stat.innerHTML = "Score was " + player.score ;
 }
 
-function endGameNoFuel() {
+function endGameNoEnergy() {
     player.start = false;
-    score.innerHTML = "Game Over No More Fuel";
+    score.innerHTML = "Game Over No More Energy";
     startScreen.classList.remove("hide");
     bensin_stat.innerHTML = "Score was " + player.score ;
 }
@@ -176,39 +177,39 @@ function start() {
         gameArea.appendChild(div);
     }
     window.requestAnimationFrame(playGame);
-    let car = document.createElement("div");
-    //car.innerText = "Car";
-    car.setAttribute("class", "car");
-    gameArea.appendChild(car);
+    let bird = document.createElement("div");
+    //bird.innerText = "bird";
+    bird.setAttribute("class", "bird");
+    gameArea.appendChild(bird);
 
     //bimon- peletakan mobil pas start supaya di tengah
     let road = gameArea.getBoundingClientRect();
     player.x = Math.floor((road.width-50) / 2) ;
 
-    player.y = car.offsetTop;
+    player.y = bird.offsetTop;
     for (let x = 0; x < 3; x++) {
         //bimon- ciptain 3 mobil penghalang setiap render 
-        let batu = document.createElement("div");
-        batu.classList.add("batu");
-        batu.innerHTML = "<br>" + (x + 1);
-        batu.y = ((x + 1) * 600) * -1;
-        batu.style.top = batu.y + "px";
-        batu.style.left = Math.floor(Math.random() * 350) + "px";
-        // batu.style.backgroundColor = randomColor();
+        let swarm = document.createElement("div");
+        swarm.classList.add("swarm");
+        swarm.innerHTML = "<br>" + (x + 1);
+        swarm.y = ((x + 1) * 600) * -1;
+        swarm.style.top = swarm.y + "px";
+        swarm.style.left = Math.floor(Math.random() * 350) + "px";
+        // swarm.style.backgroundColor = randomColor();
         
-        gameArea.appendChild(batu);
+        gameArea.appendChild(swarm);
     }
 
-    //bimon- ciptain 1 koin setiap render
-    let koin = document.createElement("div");
-    koin.classList.add("koin");
-    koin.innerHTML = "$";
-    // koin.y = ((2 + 1) * 600) * -1;
-    koin.y = 100;
-    koin.style.top = koin.y + "px";
-    koin.style.left = Math.floor(Math.random() * 350) + "px";
+    //bimon- ciptain 1 worm setiap render
+    let worm = document.createElement("div");
+    worm.classList.add("worm");
+    worm.innerHTML = "";
+    // worm.y = ((2 + 1) * 600) * -1;
+    worm.y = 100;
+    worm.style.top = worm.y + "px";
+    worm.style.left = Math.floor(Math.random() * 350) + "px";
     
-    gameArea.appendChild(koin);    
+    gameArea.appendChild(worm);    
     
 }
 
