@@ -132,6 +132,7 @@ function playGame() {
         }
     }
 }
+}
 
 function pressOn(e) {
     e.preventDefault();
