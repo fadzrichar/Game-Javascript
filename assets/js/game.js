@@ -1,6 +1,6 @@
 const score = document.querySelector(".score");
 const startScreen = document.querySelector(".startScreen");
-const gameArea = document.querySelector(".gameArea");
+const gameArea = document.querySelector('gameArea')
 let player = {
     speed: 5
     , score: 0
@@ -94,7 +94,7 @@ function endGame() {
 
 function start() {
     startScreen.classList.add("hide");
-    //gameArea.classList.remove("hide");
+    gameArea.classList.remove("hide");
     gameArea.innerHTML = "";
     player.start = true;
     player.score = 0;
