@@ -2,11 +2,27 @@
   display: none;
 }
 
+.koin{
+  position: absolute;
+  /* bottom: 100px; */
+  margin: auto;
+  width: 50px;
+  height: 50px;
+  background-color: rgb(47, 245, 8);
+  /* line-height: 38px; */
+  font-size: 30px;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 30px;
+  /* background-image: url(car2.png); */
+  /* background-size: cover; */
+}
+
 .car,
-.enemy {
+.batu {
   position: absolute;
   bottom: 100px;
-  margin: auto;
+  left: auto;
   width: 50px;
   height: 100px;
   background-color: white;
@@ -14,7 +30,7 @@
   font-size: 1.7em;
   text-align: center;
   vertical-align: middle;
-  background-image: url(car2.png);
+  /* background-image: url(car2.png); */
   background-size: cover;
 }
 
@@ -26,9 +42,9 @@
   background-color: white;
 }
 
-.score {
+.score,.bensin_stat{
   background-color: black;
-  height: 70px;
+  height: 30px;
   text-align: center;
   color: white;
   font-size: 1.5em;
@@ -45,9 +61,11 @@
 }
 
 .startScreen {
-  position: absolute;
+  /* position: absolute; */
   background-color: red;
-  left: 25%;
+  /* left: 25%; */
+  left: auto;
+  right: auto;
   top: 100px;
   color: white;
   z-index: 1;
@@ -55,6 +73,7 @@
   border: 1px solid red;
   padding: 15px;
   margin: auto;
-  width: 50%;
+  /* width: 50%; */
+  width: 370px;
   font-family: sans-serif;
 }
