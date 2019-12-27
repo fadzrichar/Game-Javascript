@@ -93,7 +93,7 @@ function playGame() {
         if (keys.ArrowUp && player.y > road.top - 250) {
             player.y -= player.speed;
         }
-        if (keys.ArrowDown && player.y < road.bottom - 250) {
+        if (keys.ArrowDown && player.y < road.bottom - 2) {
             player.y += player.speed;
         }
         if (keys.ArrowLeft && player.x > 0) {
