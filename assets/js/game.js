@@ -1,5 +1,5 @@
 const score = document.querySelector(".score");
-const bensin_stat = document.querySelector(".bensin_stat");
+const energy_stat = document.querySelector(".energy_stat");
 const startScreen = document.querySelector(".startScreen");
 const gameArea = document.querySelector(".gameArea");
 
@@ -8,13 +8,13 @@ let player = {
     start: false,
     speed: 5,
     score: 0,
-    bensin_stat: 1000
+    energy_stat: 1000
 };
 let keys = {
-    ArrowUp: false
-    , ArrowDown: false
-    , ArrowRight: false
-    , ArrowLeft: false
+    ArrowUp: false,
+    ArrowDown: false,
+    ArrowRight: false,
+    ArrowLeft: false
 };
 // startScreen.addEventListener("click", start);
 document.addEventListener("keydown", pressOn);
@@ -69,7 +69,7 @@ function movingDownWorm(bird) {
         if (getWorm(bird, item)) {
             item.classList.add("hide");
             player.score += 100;
-            player.bensin_stat += 300;
+            player.energy_stat += 300;
         }       
         if (item.y >= 1500) {
             item.y = -600;
@@ -124,10 +124,10 @@ function playGame() {
         }
         score.innerHTML = "Score: " + player.score ;
         
-        player.bensin_stat--;
-        bensin_stat.innerHTML = "Energy: "+ player.bensin_stat ;
+        player.energy_stat--;
+        energy_stat.innerHTML = "Energy: "+ player.energy_stat ;
 
-        if (player.bensin_stat < 1){
+        if (player.energy_stat < 1){
             // console.log("Energy habis boss");
             endGameNoEnergy();
         }
@@ -151,14 +151,14 @@ function endGame() {
     player.start = false;
     score.innerHTML = "Game Over";
     startScreen.classList.remove("hide");
-    bensin_stat.innerHTML = "Score was " + player.score ;
+    energy_stat.innerHTML = "Score was " + player.score ;
 }
 
 function endGameNoEnergy() {
     player.start = false;
     score.innerHTML = "Game Over No More Energy";
     startScreen.classList.remove("hide");
-    bensin_stat.innerHTML = "Score was " + player.score ;
+    energy_stat.innerHTML = "Score was " + player.score ;
 }
 
 function start() {
@@ -167,7 +167,7 @@ function start() {
     gameArea.innerHTML = "";
     player.start = true;
     player.score = 0;
-    player.bensin_stat = 1000;
+    player.energy_stat = 1000;
 
     for (let x = 0; x < 10; x++) {
         let div = document.createElement("div");

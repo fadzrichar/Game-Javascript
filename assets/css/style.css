@@ -51,16 +51,8 @@
   /* border: 1px solid #efefef; */
   border-radius: 10%;
 }
-/* 
-.line {
-  position: absolute;
-  height: 100px;
-  width: 10px;
-  margin-left: 195px;
-  background-color: white;
-} */
 
-.score,.bensin_stat{
+.score,.energy_stat{
   background-color: skyblue;
   height: 30px;
   text-align: center;
@@ -134,4 +126,8 @@
   to {
     background-position: -99999999px 0;
   }
+}
+
+#music {
+  display:none;
 }
