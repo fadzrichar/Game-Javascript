@@ -8,7 +8,8 @@ let player = {
     start: false,
     speed: 5,
     score: 0,
-    bensin_stat: 1000
+    bensin_stat: 1000,
+    jum_batu : 3
 };
 let keys = {
     ArrowUp: false
@@ -17,6 +18,8 @@ let keys = {
     , ArrowLeft: false
 };
 // startScreen.addEventListener("click", start);
+
+//menambahkan fungsi game DOM mendeteksi penekanan tombol panah keyboard 
 document.addEventListener("keydown", pressOn);
 document.addEventListener("keyup", pressOff);
 
@@ -115,12 +118,17 @@ function playGame() {
         window.requestAnimationFrame(playGame);
         player.score++;
         score.innerHTML = "Score: " + player.score ;
+
+        // if(player.score > 10000){
+        //     player.jum_batu = 5;
+        // }else if (player.score > 1000){
+        //     player.jum_batu = 4;
+        // }
         
         player.bensin_stat--;
         bensin_stat.innerHTML = "Fuel: "+ player.bensin_stat ;
 
         if (player.bensin_stat < 1){
-            // console.log("Bensin habis boss");
             endGameNoFuel();
         }
     }
@@ -147,11 +155,13 @@ function endGame() {
 
 function endGameNoFuel() {
     player.start = false;
-    score.innerHTML = "Game Over No More Fuel";
+    score.innerHTML = "Game Over, No More Fuel";
     startScreen.classList.remove("hide");
     bensin_stat.innerHTML = "Score was " + player.score ;
 }
 
+
+//method memulai permainan
 function start() {
     startScreen.classList.add("hide");
     gameArea.classList.remove("hide");
@@ -160,6 +170,7 @@ function start() {
     player.score = 0;
     player.bensin_stat = 1000;
 
+    //bikin marka jalan
     for (let x = 0; x < 10; x++) {
         let div = document.createElement("div");
         div.classList.add("line");
@@ -169,17 +180,16 @@ function start() {
     }
     window.requestAnimationFrame(playGame);
     let car = document.createElement("div");
-    //car.innerText = "Car";
     car.setAttribute("class", "car");
     gameArea.appendChild(car);
 
-    //bimon- peletakan mobil pas start supaya di tengah
+    //bimon- peletakan bus pas start supaya di tengah
     let road = gameArea.getBoundingClientRect();
     player.x = Math.floor((road.width-50) / 2) ;
 
     player.y = car.offsetTop;
     for (let x = 0; x < 3; x++) {
-        //bimon- ciptain 3 mobil penghalang setiap render 
+        //bimon- ciptain 3 penghalang setiap render 
         let batu = document.createElement("div");
         batu.classList.add("batu");
         batu.innerHTML = "<br>" + (x + 1);
