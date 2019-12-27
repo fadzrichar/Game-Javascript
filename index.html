@@ -10,7 +10,7 @@
     </head>
     <body>
         <div class="score"></div>
-        <div class="bensin_stat"></div>
+        <div class="energy_stat"></div>
         <div class="game">
             <div class="startScreen">Press anyKey to Start 
                 <br>Use your keyboard arrow keys to move
@@ -19,10 +19,11 @@
             </div>
             <div class="gameArea"></div>
         </div>
-        <div>
-            <audio
-                controls
-                src="./assets/music/mmm.mp3" autoplay>
+        <div id="music">
+            <audio autoplay>
+              <source src="./assets/music/mmm.mp3" type="audio/mpeg">
+              <p>If you can read this, your browser does not support the audio element.</p>
+            </audio>
         </div>
         <script src="./assets/js/game.js"></script>
     </body>

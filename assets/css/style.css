@@ -60,7 +60,7 @@
   background-color: white;
 } */
 
-.score,.bensin_stat{
+.score,.energy_stat{
   background-color: skyblue;
   height: 30px;
   text-align: center;
@@ -94,4 +94,8 @@
   font-family: sans-serif;
   padding-top: 15px;
   padding-bottom: 15px;
+}
+
+#music {
+  display:none;
 }
