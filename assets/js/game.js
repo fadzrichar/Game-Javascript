@@ -93,7 +93,7 @@ function playGame() {
         if (keys.ArrowUp && player.y > road.top - 250) {
             player.y -= player.speed;
         }
-        if (keys.ArrowDown && player.y < road.bottom - 2) {
+        if (keys.ArrowDown && player.y < road.bottom - 200) {
             player.y += player.speed;
         }
         if (keys.ArrowLeft && player.x > 0) {
@@ -182,13 +182,13 @@ function start() {
     bird.setAttribute("class", "bird");
     gameArea.appendChild(bird);
 
-    //bimon- peletakan mobil pas start supaya di tengah
+    //bimon- peletakan bird pas start supaya di tengah
     let road = gameArea.getBoundingClientRect();
     player.x = Math.floor((road.width-50) / 2) ;
 
     player.y = bird.offsetTop;
     for (let x = 0; x < 3; x++) {
-        //bimon- ciptain 3 mobil penghalang setiap render 
+        //bimon- ciptain 3 bird penghalang setiap render 
         let swarm = document.createElement("div");
         swarm.classList.add("swarm");
         swarm.innerHTML = "<br>" + (x + 1);
